@@ -1,10 +1,14 @@
 package com.portfolio.thot.project.model;
 
+
 import java.util.UUID;
+
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.Table;
 import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 
 import org.hibernate.annotations.Type;
 
@@ -17,16 +21,19 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
+@Table(name="libro")
 @Builder
-public class User {
-
+public class Libro {
+	
 	@Id
 	@Type(type = "uuid-char")
-	private final UUID userId = UUID.randomUUID();
-	@NotBlank(message = "Es necesario el nombre de usuario")
-	private String username;
-	@NotBlank(message = "Es necesario la contraseña")
-	private String password;
-	private UserType tipoUsuario;
-
+	private final UUID libroId = UUID.randomUUID();
+	@NotBlank
+	private String titulo;
+	@NotNull
+	private int cantidadTotalEjemplares;
+	@NotNull
+	private int cantidadEjemplaresDisponible;
+	
+	
 }

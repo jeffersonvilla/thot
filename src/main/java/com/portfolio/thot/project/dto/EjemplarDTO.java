@@ -1,6 +1,8 @@
 package com.portfolio.thot.project.dto;
 
-import java.time.Instant;
+import java.util.UUID;
+
+import com.portfolio.thot.project.model.EstadoEjemplar;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -11,9 +13,9 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-public class AuthenticationResponse {
-	private String authenticationToken;
-    private String refreshToken;
-    private Instant expiresAt;
-    private String username;
+public class EjemplarDTO {
+
+	private UUID ejemplarId;
+	private EstadoEjemplar estado;
+	private UUID libroId;
 }

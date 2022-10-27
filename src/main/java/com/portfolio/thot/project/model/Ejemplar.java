@@ -3,8 +3,10 @@ package com.portfolio.thot.project.model;
 import java.util.UUID;
 
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.Id;
-import javax.validation.constraints.NotBlank;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 
 import org.hibernate.annotations.Type;
 
@@ -18,15 +20,14 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @Entity
 @Builder
-public class User {
+public class Ejemplar {
 
 	@Id
 	@Type(type = "uuid-char")
-	private final UUID userId = UUID.randomUUID();
-	@NotBlank(message = "Es necesario el nombre de usuario")
-	private String username;
-	@NotBlank(message = "Es necesario la contraseña")
-	private String password;
-	private UserType tipoUsuario;
-
+	private final UUID ejemplarId = UUID.randomUUID();
+	private EstadoEjemplar estado;
+	
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "libroId", nullable = false)
+	private Libro libro;
 }
